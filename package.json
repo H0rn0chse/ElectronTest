@@ -11,7 +11,7 @@
         "nsis": {
             "artifactName": "${productName}-Installer.${ext}"
         }
-    }
+    },
     "release": "electron-builder --windows --publish always"
   },
   "repository": {
