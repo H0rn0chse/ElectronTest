@@ -4,7 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+	"start": "electron .",
+	"postinstall": "electron-builder install-app-deps",
+	"build": "electron-builder --windows",
+	"release": "electron-builder --windows --publish always"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   },
   "homepage": "https://github.com/H0rn0chse/ElectronTest#readme",
   "devDependencies": {
-    "electron": "^7.1.7"
+    "electron": "^7.1.7",
+    "electron-builder": "^21.2.0"
   }
 }
