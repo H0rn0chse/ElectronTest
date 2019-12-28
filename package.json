@@ -1,17 +1,12 @@
 {
   "name": "electrontest",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "postinstall": "electron-builder install-app-deps",
     "buildLocal": "electron-builder --windows",
-    "build": {
-        "nsis": {
-            "artifactName": "${productName}-Installer.${ext}"
-        }
-    },
     "release": "electron-builder --windows --publish always"
   },
   "repository": {
@@ -27,5 +22,10 @@
   "devDependencies": {
     "electron": "^7.1.7",
     "electron-builder": "^22.0.0"
-  }
+  },
+  "build": {
+        "nsis": {
+            "artifactName": "${productName}-Installer.${ext}"
+        }
+    }
 }
