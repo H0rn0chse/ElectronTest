@@ -9,6 +9,6 @@ describe('some test', function () {
 		//Act
 		let testVar = someMock.someFunction();
 		//Assert
-		assert.equal(testVar, true, "some message")
+		assert.equal(testVar, false, "some message")
 	});
 })
