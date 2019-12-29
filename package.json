@@ -7,7 +7,8 @@
     "start": "electron .",
     "postinstall": "electron-builder install-app-deps",
     "buildLocal": "electron-builder --windows",
-    "release": "electron-builder --windows --publish always"
+    "release": "electron-builder --windows --publish always",
+    "test": "electron-mocha --recursive './test/*.spec.js' --reporter dot"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,14 @@
   "homepage": "https://github.com/H0rn0chse/ElectronTest#readme",
   "devDependencies": {
     "electron": "^7.1.7",
-    "electron-builder": "^22.0.0"
+    "electron-builder": "^22.0.0",
+    "electron-mocha": "^8.1.2",
+    "jest": "^24.9.0",
+    "sinon": "^8.0.1"
+  },
+  "build": {
+    "nsis": {
+      "artifactName": "${productName}-Installer.${ext}"
+    }
   }
 }
