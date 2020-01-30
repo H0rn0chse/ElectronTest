@@ -8,7 +8,7 @@
     "postinstall": "electron-builder install-app-deps",
     "buildLocal": "electron-builder --windows",
     "release": "electron-builder --windows --publish always",
-    "test": "electron-mocha --recursive './test/*.spec.js' --reporter dot"
+    "test": "qunit \"test/**/*qunit.js\""
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
     "nsis": {
       "artifactName": "${productName}-Installer.${ext}"
     }
+  },
+  "dependencies": {
+    "qunit": "^2.9.3"
   }
 }
