@@ -38,7 +38,8 @@ QUnit.test("callsStuff", function (assert) {
 	var oResult = myStuff.doMoreStuff();
 	var oExpectedResult = {
 		imVerySpecial: true,
-		more: true
+		more: true,
+		imBroken: true
 	}
 	assert.deepEqual(oResult, oExpectedResult, "all fine");
 })
