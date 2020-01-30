@@ -14,22 +14,23 @@ jobs:
         os: [windows-latest]
 
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
         with:
-          node-version: 12.8.0
-      - name: install
-        run: yarn
-      - name: build # tsc, for a typescript project
-        run: yarn build
-      - name: test
-        run: yarn test # ava, jest, whatever
-      - name: release
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        # ^ GITHUB_TOKEN is auto created by actions, but a bug was making github
-        # actions use the _masked_ token as the token value in then env var.
-        # to mitigate, i created a new github token called GH_TOKEN, &
-        # loaded it into github > settings > secrets. electron-builder wants a
-        # token name GH_TOKEN anyway :)
-        run: yarn release # electron-builder --publish always
+          node-version: 10
+
+      - name: Build/release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.github_token }}
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: true
+          
+          nsis.artifactName: ${productName}-Installer.${ext}
